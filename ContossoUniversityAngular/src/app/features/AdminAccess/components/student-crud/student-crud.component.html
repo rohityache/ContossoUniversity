@@ -1,0 +1,101 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-8">
+      <h3>Students</h3>
+    </div>
+    <div class="col-md-4 text-end">
+      <button class="btn btn-success mb-3" (click)="toggleAddStudentForm()">
+        Add Student
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <table class="table table-hover table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Last Name</th>
+        <th>First Name</th>
+        <th>Enrollment Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <td>{{ student.id }}</td>
+        <td>{{ student.lastName }}</td>
+        <td>{{ student.firstMidName }}</td>
+        <td>{{ student.enrollmentDate | date }}</td>
+        <td>
+          <button
+            class="btn btn-sm btn-primary me-2"
+            (click)="editStudent(student)"
+          >
+            Edit
+          </button>
+          <button
+            class="btn btn-sm btn-danger"
+            (click)="deleteStudent(student.id)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="showAddStudentForm || selectedStudent" class="mt-4">
+    <h4>{{ selectedStudent ? "Edit Student" : "Add New Student" }}</h4>
+    <form (ngSubmit)="selectedStudent ? updateStudent() : addStudent()">
+      <div class="mb-3">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input
+          id="lastName"
+          [(ngModel)]="currentStudent.lastName"
+          name="lastName"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="firstMidName" class="form-label">First Name</label>
+        <input
+          id="firstMidName"
+          [(ngModel)]="currentStudent.firstMidName"
+          name="firstMidName"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="enrollmentDate" class="form-label">Enrollment Date</label>
+        <input
+          id="enrollmentDate"
+          [(ngModel)]="currentStudent.enrollmentDate"
+          name="enrollmentDate"
+          class="form-control"
+          type="date"
+          required
+        />
+      </div>
+      <button type="submit" class="btn btn-success">
+        {{ selectedStudent ? "Update Student" : "Add Student" }}
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary ms-2"
+        (click)="cancelEdit()"
+      >
+        Cancel
+      </button>
+    </form>
+  </div>
+
+  <button class="btn btn-primary mt-3" (click)="exportToExcel()">
+    Export to Excel
+  </button>
+</div>

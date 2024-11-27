@@ -1,0 +1,31 @@
+/* Add some custom styles for a better look */
+.my-list-group-item {
+  background-color: #f8f9fa; /* Light background */
+  border: 1px solid #007bff; /* Blue border */
+  color: #007bff; /* Blue text */
+  font-size: 18px; /* Larger text */
+  font-weight: 500; /* Medium weight */
+  padding: 15px 20px; /* More padding */
+  margin-bottom: 10px; /* Margin between buttons */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 8px;
+}
+
+.my-list-group-item:hover {
+  background-color: #007bff; /* Blue background on hover */
+  color: white; /* White text on hover */
+}
+
+h2 {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.my-list-group {
+  margin: 0 auto;
+  max-width: 600px; /* Limit width for better focus */
+}
+
+.container {
+  padding: 20px;
+}

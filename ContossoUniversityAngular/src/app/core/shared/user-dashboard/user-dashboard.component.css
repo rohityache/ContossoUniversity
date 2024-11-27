@@ -1,0 +1,23 @@
+/* user-dashboard.component.css */
+.navbar {
+  margin-bottom: 20px;
+}
+
+.carousel {
+  margin-top: 20px;
+}
+
+.carousel-inner img {
+  height: 400px;
+  object-fit: cover;
+}
+
+h2 {
+  margin-top: 20px;
+}
+
+p {
+  margin-bottom: 15px;
+  font-size: 16px;
+  line-height: 1.5;
+}

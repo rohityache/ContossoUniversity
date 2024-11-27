@@ -1,0 +1,88 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-8">
+      <h3>Courses</h3>
+    </div>
+    <div class="col-md-4 text-end">
+      <button class="btn btn-success mb-3" (click)="toggleAddCourseForm()">
+        Add Course
+      </button>
+    </div>
+  </div>
+
+  <table class="table table-hover table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>Course ID</th>
+        <th>Title</th>
+        <th>Credits</th>
+        <th>Department ID</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of courses">
+        <td>{{ course.courseID }}</td>
+        <td>{{ course.title }}</td>
+        <td>{{ course.credits }}</td>
+        <td>{{ course.departmentID }}</td>
+        <td>
+          <button
+            class="btn btn-sm btn-primary me-2"
+            (click)="updateCourse(course)"
+          >
+            Edit
+          </button>
+          <button
+            class="btn btn-sm btn-danger"
+            (click)="deleteCourse(course.courseID)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="showAddCourseForm" class="mt-4">
+    <h4>Add New Course</h4>
+    <form (ngSubmit)="addCourse()">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          id="title"
+          [(ngModel)]="newCourse.title"
+          name="title"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="credits" class="form-label">Credits</label>
+        <input
+          id="credits"
+          [(ngModel)]="newCourse.credits"
+          name="credits"
+          class="form-control"
+          type="number"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="departmentID" class="form-label">Department ID</label>
+        <input
+          id="departmentID"
+          [(ngModel)]="newCourse.departmentID"
+          name="departmentID"
+          class="form-control"
+          type="number"
+          required
+        />
+      </div>
+      <button type="submit" class="btn btn-success">Add Course</button>
+    </form>
+  </div>
+  <button class="btn btn-primary mt-3" (click)="exportToExcel()">
+    Export to Excel
+  </button>
+</div>

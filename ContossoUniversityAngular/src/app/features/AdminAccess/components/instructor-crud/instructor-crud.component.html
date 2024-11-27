@@ -1,0 +1,102 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-8">
+      <h3>Instructors</h3>
+    </div>
+    <div class="col-md-4 text-end">
+      <button class="btn btn-success mb-3" (click)="toggleAddInstructorForm()">
+        Add Instructor
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <table class="table table-hover table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Last Name</th>
+        <th>First Name</th>
+        <th>Hire Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let instructor of instructors">
+        <td>{{ instructor.id }}</td>
+        <td>{{ instructor.lastName }}</td>
+        <td>{{ instructor.firstMidName }}</td>
+        <td>{{ instructor.hireDate | date }}</td>
+        <td>
+          <button
+            class="btn btn-sm btn-primary me-2"
+            (click)="editInstructor(instructor)"
+          >
+            Edit
+          </button>
+          <button
+            class="btn btn-sm btn-danger"
+            (click)="deleteInstructor(instructor.id)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="showAddInstructorForm || selectedInstructor" class="mt-4">
+    <h4>{{ selectedInstructor ? "Edit Instructor" : "Add New Instructor" }}</h4>
+    <form
+      (ngSubmit)="selectedInstructor ? updateInstructor() : addInstructor()"
+    >
+      <div class="mb-3">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input
+          id="lastName"
+          [(ngModel)]="currentInstructor.lastName"
+          name="lastName"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="firstMidName" class="form-label">First Name</label>
+        <input
+          id="firstMidName"
+          [(ngModel)]="currentInstructor.firstMidName"
+          name="firstMidName"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="hireDate" class="form-label">Hire Date</label>
+        <input
+          id="hireDate"
+          [(ngModel)]="currentInstructor.hireDate"
+          name="hireDate"
+          class="form-control"
+          type="date"
+          required
+        />
+      </div>
+      <button type="submit" class="btn btn-success">
+        {{ selectedInstructor ? "Update Instructor" : "Add Instructor" }}
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary ms-2"
+        (click)="cancelEdit()"
+      >
+        Cancel
+      </button>
+    </form>
+  </div>
+  <button class="btn btn-primary mt-3" (click)="exportToExcel()">
+    Export to Excel
+  </button>
+</div>

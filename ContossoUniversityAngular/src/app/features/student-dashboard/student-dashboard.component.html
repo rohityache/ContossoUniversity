@@ -1,0 +1,84 @@
+<!-- student header -->
+<!-- student-dashboard-header.component.html -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <i class="bi bi-bank fs-2"></i>
+      Contosso University
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item me-2">
+          <button
+            class="btn btn-outline nav-link"
+            (click)="navigateTo('/student-dashboard')"
+          >
+            <i class="bi bi-house-door-fill fs-5"></i>
+            Home
+          </button>
+        </li>
+        <li></li>
+        <li class="nav-item">
+          <a class="btn btn-outline-danger nav-link" (click)="logout()">
+            <i class="bi bi-box-arrow-right fs-2"></i>
+            <span class="logout-text">Logout</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="dashboard mb-5">
+  <h2>Student Dashboard</h2>
+  <div class="cards-container">
+    <div class="card" *ngFor="let dept of departments">
+      <h3>{{ dept.name }}</h3>
+      <p>Dept Budget: {{ dept.budget }}</p>
+      <button (click)="openCourseModal(dept.departmentID)">
+        Explore Courses
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for displaying courses -->
+<div class="modal" tabindex="-1" role="dialog" *ngIf="showModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Courses in {{ selectedDepartment.name }}</h5>
+        <button type="button" class="close-btn" (click)="closeModal()">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="course-card" *ngFor="let course of courses">
+          <h4>{{ course.title }}</h4>
+          <p>Credits: {{ course.credits }}</p>
+          <button
+            class="btn btn-primary"
+            (click)="enrollInCourse(course.courseID)"
+          >
+            Enroll
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="fixed-bottom mt-5">
+  <app-footer></app-footer>
+</div>

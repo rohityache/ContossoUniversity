@@ -1,0 +1,37 @@
+.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: #343a40;
+  color: white;
+}
+
+.footer .container {
+  max-width: 960px;
+}
+
+.footer i {
+  margin-right: 8px;
+}
+
+.footer .row .col {
+  margin-bottom: 10px;
+}
+
+.footer small {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto;
+}

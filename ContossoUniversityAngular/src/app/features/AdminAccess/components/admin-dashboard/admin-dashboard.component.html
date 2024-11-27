@@ -1,0 +1,73 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <i class="bi bi-bank fs-2"></i>
+      Contosso University
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <button
+            class="btn btn-outline-primary nav-link"
+            (click)="navigateTo('/admin')"
+          >
+            <i class="bi bi-house-door-fill fs-5"></i>
+            Home
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-outline-danger nav-link" (click)="logout()">
+            <i class="bi bi-box-arrow-right fs-5"></i>
+            Logout
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- List of options for Admin for crud -->
+<div class="container mt-4">
+  <h2 class="text-center text-primary">Admin Dashboard</h2>
+  <div class="list-group my-list-group mt-4">
+    <a
+      routerLink="students"
+      class="list-group-item list-group-item-action my-list-group-item"
+      >🎓 Manage Students</a
+    >
+    <a
+      routerLink="instructors"
+      class="list-group-item list-group-item-action my-list-group-item"
+      >👨‍🏫 Manage Instructors</a
+    >
+    <a
+      routerLink="enrollments"
+      class="list-group-item list-group-item-action my-list-group-item"
+      >📝 Manage Enrollments</a
+    >
+    <a
+      routerLink="departments"
+      class="list-group-item list-group-item-action my-list-group-item"
+      >🏢 Manage Departments</a
+    >
+    <a
+      routerLink="courses"
+      class="list-group-item list-group-item-action my-list-group-item"
+      >📚 Manage Courses</a
+    >
+  </div>
+</div>
+
+<!-- Add a router-outlet to display the CRUD components -->
+<router-outlet></router-outlet>

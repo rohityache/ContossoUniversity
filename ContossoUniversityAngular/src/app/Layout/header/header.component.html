@@ -1,0 +1,54 @@
+<!-- user-dashboard.component.html -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <i class="bi bi-bank fs-2"></i>
+      Contosso University
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <button
+            class="btn btn-outline-primary nav-link"
+            (click)="navigateTo('/user-dashboard')"
+          >
+            <i class="bi bi-house-door-fill fs-3"></i>
+
+            Home
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="btn btn-outline-primary nav-link"
+            (click)="navigateTo('/register')"
+          >
+            <i class="bi bi-person-plus-fill fs-3"></i>
+
+            Register
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="btn btn-outline-success nav-link"
+            (click)="navigateTo('/login')"
+          >
+            <i class="bi bi-box-arrow-in-right fs-3"></i>
+
+            Login
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,145 @@
+<app-header></app-header>
+
+<!-- Registration Form -->
+<div class="container mt-5 mb-4">
+  <div class="row justify-content-center">
+    <!-- Registration Form Centered -->
+    <div class="col-lg-6 col-md-8 col-sm-12">
+      <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white text-center py-4">
+          <h2>Register</h2>
+        </div>
+        <div class="card-body p-5">
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                id="firstName"
+                formControlName="firstName"
+                class="form-control"
+                placeholder="First Name"
+                [ngClass]="{
+                  'is-invalid':
+                    registerForm.get('firstName')?.invalid &&
+                    registerForm.get('firstName')?.touched
+                }"
+              />
+              <label for="firstName">First Name</label>
+              <div
+                *ngIf="
+                  registerForm.get('firstName')?.invalid &&
+                  registerForm.get('firstName')?.touched
+                "
+                class="invalid-feedback"
+              >
+                First name is required.
+              </div>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                id="lastName"
+                formControlName="lastName"
+                class="form-control"
+                placeholder="Last Name"
+                [ngClass]="{
+                  'is-invalid':
+                    registerForm.get('lastName')?.invalid &&
+                    registerForm.get('lastName')?.touched
+                }"
+              />
+              <label for="lastName">Last Name</label>
+              <div
+                *ngIf="
+                  registerForm.get('lastName')?.invalid &&
+                  registerForm.get('lastName')?.touched
+                "
+                class="invalid-feedback"
+              >
+                Last name is required.
+              </div>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input
+                type="email"
+                id="email"
+                formControlName="email"
+                class="form-control"
+                placeholder="Email"
+                [ngClass]="{
+                  'is-invalid':
+                    registerForm.get('email')?.invalid &&
+                    registerForm.get('email')?.touched
+                }"
+              />
+              <label for="email">Email</label>
+              <div
+                *ngIf="
+                  registerForm.get('email')?.invalid &&
+                  registerForm.get('email')?.touched
+                "
+                class="invalid-feedback"
+              >
+                A valid email address is required.
+              </div>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input
+                type="password"
+                id="password"
+                formControlName="password"
+                class="form-control"
+                placeholder="Password"
+                [ngClass]="{
+                  'is-invalid':
+                    passwordError && registerForm.get('password')?.touched
+                }"
+              />
+              <label for="password">Password</label>
+              <div
+                *ngIf="passwordError && registerForm.get('password')?.touched"
+                class="invalid-feedback"
+              >
+                {{ passwordError }}
+              </div>
+            </div>
+
+            <div class="form-floating mb-4">
+              <select id="role" formControlName="role" class="form-select">
+                <option value="student">Student</option>
+                <option value="instructor">Instructor</option>
+              </select>
+              <label for="role">Register As</label>
+              <div
+                *ngIf="
+                  registerForm.get('role')?.invalid &&
+                  registerForm.get('role')?.touched
+                "
+                class="invalid-feedback"
+              >
+                Role is required.
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-primary w-100"
+              [disabled]="registerForm.invalid"
+            >
+              Register
+            </button>
+          </form>
+
+          <div *ngIf="submissionError" class="text-danger text-center mt-3">
+            {{ submissionError }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
