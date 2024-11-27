@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "XzYUHbqVhEDYHSrJF9obA/E9MRxno5dqa53H6HtM2KE=",
+  "Source": "ContossoUniversityWebAPI",
+  "BasePath": "_content/ContossoUniversityWebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
